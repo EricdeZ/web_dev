@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {createContext, useState} from "react";
+import {Router} from "./components/Router/Router";
+import {themes} from "./components/ThemeSwitcher/ThemeSwitcher";
+import './App.css'
+
+// eslint-disable-next-line react-hooks/rules-of-hooks
+export const ThemeSwitcherContext = createContext({
+    themes: themes,
+    currentTheme: 'dark',
+    switcher: console.error
+})
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [theme, setTheme] = useState('dark')
+
+    return (
+        <div className="App">
+            <ThemeSwitcherContext.Provider value={
+                {currentTheme: theme,
+                switcher: setTheme,
+                themes: themes}
+            }>
+                <Router/>
+            </ThemeSwitcherContext.Provider>
+        </div>
+    );
 }
 
 export default App;
