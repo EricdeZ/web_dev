@@ -6,6 +6,7 @@ import {ThemeSwitcherContext} from "../../App";
 export const Router = () => {
 
     const {currentTheme} = useContext(ThemeSwitcherContext)
+    console.log(currentTheme)
 
     return (<div id='theme-element' className={currentTheme + ' page-container'}>
                 <BrowserRouter>

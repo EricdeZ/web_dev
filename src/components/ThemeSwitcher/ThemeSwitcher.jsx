@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useState} from "react";
 import {ColorPicker} from "../ColorPicker/ColorPicker";
 import {ThemeSwitcherContext} from "../../App";
 
@@ -6,12 +6,6 @@ export const themes = {
     custom: 'custom',
     dark: 'dark',
     light: 'light'
-}
-
-export const createTheme = (switcher, color) => {
-    const r = document.getElementById('theme-element')
-    r?.style?.setProperty('--custom', color)
-    switcher(themes.custom)
 }
 
 export const switchTheme = (switcher, theme) => {
@@ -23,37 +17,27 @@ export const switchTheme = (switcher, theme) => {
 export const ThemeSwitcher = () => {
 
     const {switcher, themes} = useContext(ThemeSwitcherContext)
-    const [color, setColor] = useState({
-        hex: '#00FF80',
-        hsv: {
-            h: 180,
-            s: 1,
-            v: 1
-        },
-        hsl: {
-            h: 180,
-            s: 1,
-            l: 1
-        }
-    })
-
-    useEffect(() => {
-        createTheme(switcher, color)
-    }, [color, switcher])
+    const [showColorPicker, setShowColorPicker] = useState(false)
 
     return (
-        <div className="theme-switcher-container">
-            <button onClick={() => {
-                switchTheme(switcher, themes.light)
-            }}>Light
-            </button>
-            <button onClick={() => {
-                switchTheme(switcher, themes.dark)
-            }}>Dark
-            </button>
-            <ColorPicker
-                color={color}
-                confirmChange={setColor}/>
+        <div className="theme-switcher">
+            <div className='theme-switcher-button-container'>
+                <button className='light' onClick={() => {
+                    switchTheme(switcher, themes.light)
+                }}>Light
+                </button>
+                <button className='dark' onClick={() => {
+                    switchTheme(switcher, themes.dark)
+                }}>Dark
+                </button>
+                <button className='custom-theme' onClick={() => {
+                    setShowColorPicker(!showColorPicker)
+                }}>Custom
+                </button>
+            </div>
+            {
+                showColorPicker ? <ColorPicker/> : ''
+            }
         </div>
     )
 
