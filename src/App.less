@@ -1,16 +1,13 @@
-html, body, #root, .App, .page-container {
-  height: 100%;
-  width: 100%;
-}
-
-
 @import "assets/helpers/mixins";
+
+@import "icons/Logo/Logo";
 
 @import "components/Header/Header";
 @import "components/Page/Page";
 @import "components/PageContent/PageContent";
 @import "components/ColorPicker/ColorPicker";
 @import "components/ThemeSwitcher/ThemeSwitcher";
+@import "components/Animation/Animation";
 
 @import "pages/About/About";
 @import "pages/Faq/Faq";
@@ -20,3 +17,9 @@ html, body, #root, .App, .page-container {
 @import "themes/dark";
 @import "themes/light";
 
+html, body, #root, .App, .page-container {
+  height: 100%;
+  width: 100%;
+  color: var(--text-light);
+  overflow-x: hidden;
+}

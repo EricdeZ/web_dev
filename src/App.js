@@ -13,13 +13,20 @@ export const ThemeSwitcherContext = createContext({
 function App() {
 
     const [theme, setTheme] = useState('dark')
+    const [themeElement, setThemeElement] = useState()
+
+    const setThemeElementContext = (element) => {
+        setThemeElement(element)
+    }
 
     return (
         <div className="App">
             <ThemeSwitcherContext.Provider value={
                 {currentTheme: theme,
                 switcher: setTheme,
-                themes: themes}
+                themes: themes,
+                element: themeElement,
+                setElement: setThemeElementContext}
             }>
                 <Router/>
             </ThemeSwitcherContext.Provider>

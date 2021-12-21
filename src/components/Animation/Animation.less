@@ -1,0 +1,24 @@
+.animation-container {
+  overflow: hidden;
+}
+
+.animation-height {
+  transition: max-height 2s;
+  animation: height-grow;
+  animation-duration: 3s;
+}
+
+@keyframes height-grow {
+  from {max-height: 0}
+  to {max-height: 200px}
+}
+
+.opened {
+  //max-height: max-content;
+  animation-iteration-count: initial;
+}
+
+.closed {
+  //max-height: 0;
+  animation-iteration-count: revert;
+}

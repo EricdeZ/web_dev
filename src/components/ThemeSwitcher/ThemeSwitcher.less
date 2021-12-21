@@ -1,7 +1,16 @@
 .theme-switcher {
+  max-height: 40px;
   width: 350px;
-  height: 400px;
   caret-color: transparent;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  transition: max-height 0.7s ease-out;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  &:hover {
+    max-height: 400px;
+  }
   &-button-container {
     display: flex;
     justify-content: flex-end;
@@ -15,6 +24,7 @@
       font-size: 1rem;
       width: 35%;
       margin-right: 10px;
+      color: var(--text-light);
     }
     .light {
       background: var(--bg);
